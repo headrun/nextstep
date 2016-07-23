@@ -1,0 +1,28 @@
+{
+  "name": "nextwealth",
+  "version": "0.0.0",
+  "homepage": "https://github.com/yeswanthannadata/Nextwealth",
+  "authors": [
+    "Headrun"
+  ],  
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],  
+  "dependencies": {
+    "jquery": "~2.2.4",
+    "angular": "~1.5.6",
+    "datatables": "~1.10.12",
+    "angular-datatables": "~0.5.4",
+    "bootstrap": "~3.3.6",
+    "jquery-uploadfile": "~4.0.2",
+    "angular-ui-router": "~0.3.0",
+    "font-awesome": "~4.6.3"
+  }
+}
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    $(document).ready(function(){
+      var url = window.location.href;
+      console.log(url);
+
+      $.ajax({
+        url: "/api/board",
+        type: "post",
+        data: {},
+        dataType: "json",
+        success: function(resp){
+            displayCharts(resp.result.data);
+        }
+      });
+    });
+
+    function displayCharts(data){
+        var options ={
+            title: {
+                text: 'Productivity Dashboard',
+                x: -20 //center
+            },
+            subtitle: {
+                text: '',
+                x: -20
+            },
+            xAxis: {
+                categories: data.date 
+            },
+            yAxis: {
+                title: {
+                    text: 'Per Day Achieved'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: [ "#5290e9", "#71b37c", "#ec932f", "#e14d57", "#965994", "#9d7952", "#cc527b", "#33867f", "#ada434" ]
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'CC',
+                data: data.data.CC
+            },
+            {
+                name: 'DF',
+                data: data.data.DF
+            },
+            {
+                name: 'DD',
+                data: data.data.DD
+            }]
+       };
+
+
+        $('#chartDiv').highcharts(options);
+    }
+  </script>
+</head>
+<body>
+<div class="container">
+<header class="navbar">
+    <div class="container-fluid expanded-panel">
+        <div class="row">
+            <div id="logo" class="col-xs-12 col-sm-2">
+                <a href="">NextStep</a>
+            </div>
+            <div id="top-panel" class="col-xs-12 col-sm-10">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 top-panel-right">
+                        <ul class="nav navbar-nav pull-right panel-menu">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+                                    <div class="avatar">
+                                        <img src="/images/user.svg" alt="" />
+                                    </div>
+                                    <i class="fa fa-angle-down pull-right"></i>
+                                    <div class="user-mini pull-right">
+                                        <span class="welcome">{{ $ctrl.user.userName }}</span>
+                                        <span>{{ $ctrl.user.role }}</span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                      <logout></logout>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="chartDiv" style="padding-top: 5em"></div>
+<div id="fileupload"style="float:right;margin:10px 20px"><span style="cursor:pointer">Upload</span></div>
+</div>
+</body>
+<!--<script>
+    $(function () {
+       $("#fileupload").uploadFile({
+            url:"/api/upload/",
+            fileName:"myfile",
+            dragDrop: false,
+            onSuccess:function(files,data,xhr,pd){
+                location.reload();
+                console.log('Hello');
+                if (data.msg == 'Duplicate Record'){
+                        alert('Duplicate Reord');
+                    }
+                else{
+                    console.log("in upload refresh");
+                    $('#refresh_btn').trigger('click');
+                    //location.reload();
+                    var refresh_btn = document.getElementById('refresh_btn');
+                    //var jd = $( ".drop_down option:selected" ).val();
+                    //console.log(jd);
+                    //$(".drop_down").val('number:3');
+                    //console.log('ejsbjbsajs');
+                    //$(".drop_down").val(jd);
+                }
+                $('.ajax-file-upload-statusbar').hide();
+            },
+       });
+    });
+</script>-->
+<script>
+    $(function () {
+       $("#fileupload").uploadFile({
+            url:"/api/upload/",
+            fileName:"myfile",
+            dragDrop: false,
+            onSuccess:function(files,data,xhr,pd){
+                console.log(data.result);
+                if (data.result == 'Duplicate Sheet'){
+                        alert('Duplicate Sheet');
+                    }
+                else{
+                    console.log("in upload refresh");
+                    //show_msg("Uploaded Successfully",1500);
+                    $('#refresh_btn').trigger('click');
+                }
+                location.reload();
+                $('.ajax-file-upload-statusbar').hide();
+            },
+       });
+    });
+</script>
+
+</html>

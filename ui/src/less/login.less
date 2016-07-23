@@ -1,0 +1,76 @@
+// Color variables (appears count calculates by raw css)
+@color0: #ffffff; // Appears 8 times
+@color1: #1fc4b1; // Appears 5 times
+@color2: #808080; // Appears 1 time
+@color3: #202e47; // Appears 1 time
+@color4: #e5e5e5; // Appears 1 time
+body{
+    background-color: #E8E9FD !important;
+}
+.login-box {
+  background: @color3;
+  border-radius: 0% 50%;
+  box-shadow: -10px 11px 10px @color2;
+  margin: 10% auto;
+  max-width: 354px;
+  padding: 100px 80px 80px;
+  position: relative;
+  h1 {
+    color: @color1;
+    left: 20px;
+    position: absolute;
+    text-align: left;
+    top: 20px;
+    font-size: 30px;
+  }
+  .username {
+    background: transparent;
+    border: 0px;
+    border-bottom: 2px solid @color0;
+    border-radius: 0px;
+    color: @color0;
+    font-weight: 900;
+    height: 35px;
+    padding-left: 10px;
+    width: 240px;
+    &:focus {
+      border-bottom: 2px solid @color1;
+    }
+  }
+  .password {
+    background: transparent;
+    border-radius: 0px;
+    font-weight: 900;
+    border: 0px;
+    border-bottom: 2px solid @color0;
+    color: @color0;
+    height: 35px;
+    padding: 2px 10px;
+    width: 240px;
+    &:focus {
+      border-bottom: 2px solid @color1;
+    }
+  }
+  .submit {
+    background: @color1;
+    border-radius: 2px;
+    border: 1px solid @color1;
+    bottom: 20px;
+    color: @color0;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 20px;
+    width: 100px;
+    &:focus {
+      border: 0px;
+    }
+  }
+}
+
+tbody>tr>td {
+    text-align: center !important;
+}

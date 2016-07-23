@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="login login-form-container">
+    <div class="login-box">
+        <h1>Next<i>Step</i></h1>
+        <form name="form"method="POST" ng-submit="$ctrl.onSubmit($ctrl.credentials)" novalidate>
+          <input name="username" class="username form-control" type="text" placeholder="Username" ng-model="$ctrl.credentials.username"/> 
+          <input name="password" class="password form-control" type="password" placeholder="Password" ng-model="$ctrl.credentials.password"/>
+          <button type="submit" class="submit" value="submit">submit</button>
+        </form>
+    </div>
+  </div>
+</div>

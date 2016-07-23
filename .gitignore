@@ -1,0 +1,13 @@
+*.swp
+*.swo
+*.swn
+*.swm
+*.pyc
+backend/venv/*
+node_modules/*
+ui/src/libs/*
+ui/src/app.css
+backend/api/migrations/*
+nextstep/venv/*
+nextstep/auth/migrations/*
+nextstep/dashboard/migrations/*
